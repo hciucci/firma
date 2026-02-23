@@ -462,106 +462,43 @@ body.home .mapCard{
   padding: 0;
 }
 
-/* =====================================
-   FOOTER (UNCHANGED)
-   ===================================== */
+/* =========================
+   JAXON FOOTER (scoped)
+   ========================= */
+footer.jaxonFooter {
+  background-color: #111118;
+  padding: 80px 20px;
+  text-align: center;
+}
 
-.bottomNav{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 12px 0 12px;
-  background: rgba(7,6,15,0.78);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,255,255,0.10);
+footer.jaxonFooter .footer-links {
+  margin-bottom: 30px;
 }
-.bottomWrap{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 0 18px 8px;
-  display:flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content:center;
-  gap: 8px;
-}
-.bottomCenter{
-  font-weight: 800;
-  letter-spacing: 2px;
-  opacity: 0.6;
-  text-align:center;
-  margin: 0;
-}
-.footerLogo{
-  height: 28px;
-  width: auto;
-}
-.bottomLinks{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap: 20px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.65);
-  width: 100%;
-}
-.bottomLinks a{ padding: 6px 0; }
-.bottomLinks a.active{ color: rgba(255,255,255,0.92); }
 
-.bottombar{
-  position: fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:60;
-  background: rgba(7,6,15,0.78);
-  border-top: 1px solid rgba(255,255,255,.10);
-  backdrop-filter: blur(12px);
+footer.jaxonFooter .footer-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+  opacity: 0.8;
 }
-.bottombar__inner{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 8px 12px 8px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
+
+footer.jaxonFooter .footer-links a:hover {
+  opacity: 1;
 }
-.section-pill{
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.14);
-  color: rgba(255,255,255,.86);
-  border-radius: 12px;
-  padding: 6px 10px;
+
+footer.jaxonFooter .copyright {
+  color: #666;
   font-size: 12px;
 }
-.footerbrand{ opacity:.85; margin-left:auto; }
-.footerbrand__logo{ height: 24px; width:auto; }
 
-.footnav{
-  display:flex;
-  justify-content:flex-start;
-  gap: 8px;
-  flex-wrap:wrap;
+footer.jaxonFooter .footer-logo img {
+  display: inline-block;
+  filter: brightness(0.9);
 }
-.footnav__link{
-  color: rgba(255,255,255,.68);
-  text-decoration:none;
-  font-size: 12px;
-  padding: 6px 8px;
-  border-radius: 10px;
-}
-.footnav__link:hover{ color: rgba(255,255,255,.92); background: rgba(255,255,255,.06); }
-.footnav__link.is-active{ color: rgba(255,255,255,.92); }
 
-.copyright{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: 4px 18px 0;
-  text-align:center;
-  color: rgba(255,255,255,0.45);
-  font-size: 11px;
+footer.jaxonFooter .footer-logo img:hover {
+  filter: grayscale(0%) brightness(1);
 }
 
 /* =====================================
@@ -569,21 +506,6 @@ body.home .mapCard{
    ===================================== */
 @media (max-width: 560px){
   .nav{ gap: 12px; font-size: 12px; }
-
-  .bottomCenter{ display:none; }
-  .bottomWrap{ padding: 8px 14px 4px; }
-
-  .bottomLinks{
-    justify-content:space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  .bottomLinks a:last-child{
-    margin-left: 0;
-    width: 100%;
-    text-align: center;
-    opacity: .9;
-  }
 }
 
 @media (max-width: 520px){
