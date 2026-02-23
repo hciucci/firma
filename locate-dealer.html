@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Locate Dealer | FIRMA</title>
+  <link rel="stylesheet" href="firma.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <a class="logoLink" href="about.html" aria-label="FIRMA home">
+  <img class="navLogo" src="images/firma-logo.png" alt="FIRMA logo" />
+</a>
+      <nav class="nav">
+        <a href="about.html">About us</a>
+        <a class="active" href="locate-dealer.html">Locate Dealer</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a href="account.html">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="heroCard">
+      <h1>Locate Dealership</h1>
+
+      <div class="toolbar">
+        <button class="chip" type="button">City/Zipcode/Country</button>
+
+        <!-- ✅ Replaced "Dropdown Menu" button with a real dropdown -->
+        <label class="srOnly" for="locationSelect">Choose a location</label>
+        <select id="locationSelect" class="chipSelect">
+          <option value="">Select a location…</option>
+          <option value="Los Angeles, USA">Los Angeles, USA</option>
+          <option value="Vancouver, Canada">Vancouver, Canada</option>
+          <option value="London, UK">London, UK</option>
+          <option value="Moscow, Russia">Moscow, Russia</option>
+          <option value="Tokyo, Japan">Tokyo, Japan</option>
+          <option value="Sydney, Australia">Sydney, Australia</option>
+          <option value="Cape Town, South Africa">Cape Town, South Africa</option>
+          <option value="São Paulo, Brazil">São Paulo, Brazil</option>
+        </select>
+      </div>
+
+      <div class="mapCard">
+        <div class="mapWrap">
+          <img class="mapImg" src="images/firma_world_map.png" alt="World map" />
+
+          <!-- Pins (percent-based so they scale with the image) -->
+          <span class="pin" style="--x: 20.5%; --y: 44%;" data-label="Los Angeles, USA"></span>
+          <span class="pin" style="--x: 20%; --y: 39%;" data-label="Vancouver, Canada"></span>
+          <span class="pin" style="--x: 47%; --y: 36.5%;" data-label="London, UK"></span>
+          <span class="pin" style="--x: 63%; --y: 36%;" data-label="Moscow, Russia"></span>
+          <span class="pin" style="--x: 78%; --y: 44%;" data-label="Tokyo, Japan"></span>
+          <span class="pin" style="--x: 81.5%; --y: 70%;" data-label="Sydney, Australia"></span>
+          <span class="pin" style="--x: 52%; --y: 70%;" data-label="Cape Town, South Africa"></span>
+          <span class="pin" style="--x: 37.5%; --y: 66%;" data-label="São Paulo, Brazil"></span>
+        </div>
+      </div>
+
+      <!-- ✅ Added IDs so JS can update title/description -->
+      <div class="infoCard" id="dealerInfo">
+        <h2 id="dealerTitle">Moscow, Russia <span class="star">*</span></h2>
+        <p id="dealerDesc">
+          Our Moscow Dealership was the first created out of our dealerships that span nationally.
+        </p>
+      </div>
+
+      <p class="footnote">
+        Our network can be found all over the globe, offering the best in-class driving experience
+        to those behind the wheel. We consist of locations in North America, Europe, Asia, and many
+        other parts of the world.
+      </p>
+    </section>
+
+    <footer class="bottomNav">
+      <div class="bottomWrap">
+        <div class="bottomCenter"><img class="footerLogo" src="images/FIRMAword-logo.png" alt="FIRMA" /></div>
+        <nav class="bottomLinks">
+          <a href="about.html">About us</a>
+          <a class="active" href="locate-dealer.html">Locate Dealer</a>
+          <a href="vehicles.html">Vehicles</a>
+          <a href="account.html">Account</a>
+          <a href="contact.html">Contact Information</a>
+        </nav>
+      </div>
+      <div class="copyright">2026 FIRMA all rights reserved</div>
+    </footer>
+  </main>
+
+  <!-- ✅ Dropdown + pin syncing behavior -->
+  <script>
+    const data = {
+      "Los Angeles, USA": {
+        title: "Los Angeles, USA",
+        desc: "Our Los Angeles dealership anchors the West Coast with performance-first service and delivery."
+      },
+      "Vancouver, Canada": {
+        title: "Vancouver, Canada",
+        desc: "Vancouver is our Pacific Northwest hub, built for precision builds and seasonal performance packages."
+      },
+      "London, UK": {
+        title: "London, UK",
+        desc: "London connects our European network with concierge delivery and track-focused support."
+      },
+      "Moscow, Russia": {
+        title: "Moscow, Russia",
+        desc: "Our Moscow Dealership was the first created out of our dealerships that span nationally."
+      },
+      "Tokyo, Japan": {
+        title: "Tokyo, Japan",
+        desc: "Tokyo supports our Asia-Pacific clients with tuned configurations and rapid parts logistics."
+      },
+      "Sydney, Australia": {
+        title: "Sydney, Australia",
+        desc: "Sydney is our southern flagship, serving coastal routes and performance touring builds."
+      },
+      "Cape Town, South Africa": {
+        title: "Cape Town, South Africa",
+        desc: "Cape Town expands our reach across Africa with high-end service and tailored driving experiences."
+      },
+      "São Paulo, Brazil": {
+        title: "São Paulo, Brazil",
+        desc: "São Paulo is our South American center for customization, service, and regional distribution."
+      }
+    };
+
+    const select = document.getElementById("locationSelect");
+    const titleEl = document.getElementById("dealerTitle");
+    const descEl = document.getElementById("dealerDesc");
+    const pins = Array.from(document.querySelectorAll(".pin"));
+    const infoCard = document.getElementById("dealerInfo");
+
+    function setActiveLocation(label) {
+      if (!label || !data[label]) return;
+
+      // Update info card
+      titleEl.innerHTML = `${data[label].title} <span class="star">*</span>`;
+      descEl.textContent = data[label].desc;
+
+      // Highlight correct pin
+      pins.forEach(p => p.classList.toggle("active", p.dataset.label === label));
+
+      // Sync dropdown
+      select.value = label;
+
+      // Optional: nudge attention to the info card
+      infoCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    // Dropdown -> info + highlight
+    select.addEventListener("change", (e) => {
+      setActiveLocation(e.target.value);
+    });
+
+    // Pins -> dropdown + info
+    pins.forEach(pin => {
+      pin.tabIndex = 0;
+      pin.setAttribute("role", "button");
+      pin.setAttribute("aria-label", pin.dataset.label);
+
+      pin.addEventListener("click", () => setActiveLocation(pin.dataset.label));
+      pin.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter" || ev.key === " ") {
+          ev.preventDefault();
+          setActiveLocation(pin.dataset.label);
+        }
+      });
+    });
+
+    // Default active location
+    setActiveLocation("Moscow, Russia");
+  </script>
+</body>
+</html>
