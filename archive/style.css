@@ -1,0 +1,246 @@
+/* External CSS */
+body {
+    background-color: #05050a;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-synthesis: none;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5%;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+/* This creates the layout for the 2 or 3 cars in a row */
+.vehicle-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 5%;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #0d0d15;
+    padding: 15px;
+    text-align: center;
+    width: 350px;
+}
+
+/* ADD THIS TO THE BOTTOM OF style.css */
+/* This makes the car boxes react when you hover over them */
+.card:hover {
+    border: 1px solid #ffffff; /* Adds a white border on hover */
+    background-color: #161625; /* Makes the background slightly lighter */
+    transition: 0.3s; /* Makes the change smooth, not instant */
+    cursor: pointer; /* Changes the mouse to a clicking hand */
+}
+/* ADD THIS BELOW THE HOVER CODE */
+/* This adds the glow effect to your section titles */
+h2 {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* The "glow" */
+    letter-spacing: 5px; /* Spaced out letters like the Figma design */
+    text-transform: uppercase;
+}
+/* ADD THIS TO THE BOTTOM OF style.css */
+/* This makes the Firma logo larger and gives it some breathing room */
+/* REPLACE the .nav-logo section at the bottom of style.css with this */
+.nav-logo {
+    height: 80px !important; /* increased size to make it visible */
+    width: auto;
+    display: block;
+}
+
+/* REPLACE the previous nav block with this one */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* This keeps the content from going off-screen */
+    margin: 0 auto;    /* This centers the entire nav bar on the page */
+    padding: 20px;     /* This adds breathing room inside the bar */
+}
+/* ADD THIS to the bottom of style.css */
+.logo-container {
+    flex: 0 1 auto; /* This tells the logo to take up only as much space as it needs */
+}
+/* REPLACE or ADD to the bottom of style.css */
+/* Update your existing .account-box block in style.css */
+/* Final Account Box Styling */
+.account-box {
+    width: 90%;
+    max-width: 450px;
+    background-color: #0d0d1a;
+    padding: 50px 40px;
+    border-radius: 15px;
+    border: 1px solid #243b55;
+    text-align: center;
+    box-sizing: border-box; /* This is the "magic" line that prevents stretching */
+}
+
+.account-box input {
+    width: 100%; /* This now means 100% of the BOX, not the screen */
+    padding: 12px;
+    background: #05050a;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+/* ADD THIS TO THE BOTTOM OF style.css */
+
+/* This resets any weird gaps at the top of the page */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* This ensures the nav bar always starts at the top edge */
+nav {
+    position: relative; 
+    top: 0;
+    z-index: 100;
+}
+
+/* This moves your "BUILT WITH PURPOSE" text down a bit so it doesn't hit the nav */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    background-color: #05050a;
+}
+/* ADD THIS LINE to the bottom of style.css */
+html {
+    overflow-y: scroll; /* This forces a scrollbar track on ALL pages so they don't jump */
+}
+/* FOOTER STYLING */
+footer {
+    background-color: #111118; /* Dark footer background */
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.copyright {
+    color: #666;
+    font-size: 12px;
+}
+/* Makes the footer logo match the subtle vibe of the links */
+.footer-logo img {
+    display: inline-block;
+    filter: brightness(0.9);
+}
+
+.footer-logo img:hover {
+    filter: grayscale(0%) brightness(1); /* Lights up when you hover! */
+}
+/* ADD THIS to the bottom of style.css */
+/* Removes the link styling from the logo so it stays clean */
+.logo-container a {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logo-container img {
+    border: none;
+    outline: none;
+}
+/* ADD THIS to the bottom of style.css */
+.hero-details {
+    margin-top: 60px; /* Space between tires and the Vortice R name */
+    text-align: center;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* ADD THIS to the bottom of style.css */
+
+.hero-description {
+    max-width: 600px;      /* Keeps the text from stretching across the whole screen */
+    margin: 30px auto;    /* Centers the block and adds space above/below */
+    line-height: 1.8;      /* This is the key! It adds space between the lines of text */
+    color: #bbb;           /* Slightly dimmer white for that premium feel */
+    font-size: 16px;
+}
+
+.hero-details {
+    margin-top: 40px; /* Gap between tires and description */
+    text-align: center;
+}
+/* This container holds the title and car in the same 'box' */
+.hero-visual-stack {
+    position: relative;
+    width: 100%;
+    /* This height is the "safety net" that prevents elements from breaking */
+    height: 650px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px; /* Pushes the car description away from the wheels */
+}
+
+.hero-title {
+    font-size: 110px !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    line-height: 0.85;
+    color: white;
+    position: absolute;
+    top: 20%; /* Changed from 45% to move it up into the sky */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; /* Changed from 1 to 3 so it sits ON TOP of the image */
+    width: 100%;
+    text-align: center;
+}
+
+.hero-image {
+    width: 90%;
+    max-width: 1000px;
+    position: relative;
+    z-index: 2; /* Confirms the car is ON TOP */
+    margin-top: 100px; /* Moves car down into the title */
+}
+/* Styling for the price text under the description */
+.hero-price {
+    font-size: 18px;
+    color: #bbb;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+}
+
+.hero-price strong {
+    color: white; /* Makes the price pop out */
+    font-weight: 700;
+}
