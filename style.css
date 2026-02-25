@@ -2,7 +2,8 @@
 body {
     background-color: #05050a;
     color: white;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-synthesis: none;
     margin: 0;
 }
 
