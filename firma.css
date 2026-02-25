@@ -463,6 +463,76 @@ body.home .mapCard{
 }
 
 /* =========================
+   VEHICLES PAGE (scoped)
+   ========================= */
+
+body.vehicles h2{
+  text-align: center;
+  margin-top: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+  padding-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
+
+body.vehicles .vehicle-grid{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 5%;
+  flex-wrap: wrap;
+}
+
+body.vehicles .card{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  width: 350px;
+  transition: 0.25s;
+}
+
+body.vehicles .card img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+body.vehicles .card:hover{
+  border-color: rgba(255,255,255,0.55);
+  background: rgba(255,255,255,0.10);
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+/* Final Account Box Styling */
+.account-box {
+    width: 90%;
+    max-width: 450px;
+    background-color: #0d0d1a;
+    padding: 50px 40px;
+    border-radius: 15px;
+    border: 1px solid #243b55;
+    text-align: center;
+    box-sizing: border-box; /* This is the "magic" line that prevents stretching */
+}
+
+.account-box input {
+    width: 100%; /* This now means 100% of the BOX, not the screen */
+    padding: 12px;
+    background: #05050a;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+/* =========================
    JAXON FOOTER (scoped)
    ========================= */
 footer.jaxonFooter {

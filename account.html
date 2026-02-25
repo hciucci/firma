@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="firma.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         /* Internal CSS for page-specific layout */
         .account-page-container {
@@ -13,19 +14,20 @@
     </style>
 </head>
 <body>
-    <nav>
-    <div class="logo-container">
-        <a href="index.html">
-            <img src="images/logo.png" alt="Firma Logo" class="nav-logo">
-        </a>
-    </div>
-    <div class="nav-links">
-        <a href="about.html">About us</a>
-        <a href="vehicles.html">Vehicles</a>
-        <a href="dealer.html">Locate Dealer</a>
-        <a href="account.html">Account</a>
-    </div>
-</nav>
+    <header class="topbar">
+  <div class="brand">
+    <a class="logoLink" href="index.html" aria-label="FIRMA home">
+      <img class="navLogo" src="images/firma-logo.png" alt="FIRMA logo" />
+    </a>
+
+    <nav class="nav">
+      <a href="about.html">About us</a>
+      <a href="locate-dealer.html">Locate Dealer</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a class="active" href="account.html">Account</a>
+    </nav>
+  </div>
+</header>
 
     <div class="account-page-container">
         <div class="account-box">
@@ -44,7 +46,7 @@
             </form>
         </div>
     </div>
-    <footer>
+    <footer class="jaxonFooter">
     <div class="footer-logo" style="margin-bottom: 40px; text-align: center;">
     <img src="images/footer-logo.png" alt="Firma Wordmark" style="width: 200px; height: auto; opacity: 0.8;">
 </div>
