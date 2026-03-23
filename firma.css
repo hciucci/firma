@@ -221,7 +221,7 @@ h1{
 
 .title{
   margin: 4px 0 16px;
-  font-size: 22px;
+  font-size: 36px;
   font-weight: 700;
   letter-spacing: .02em;
   color: rgba(255,255,255,.88);
@@ -229,7 +229,7 @@ h1{
 }
 .subtitle{
   margin: 22px 0 10px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   letter-spacing: .02em;
   color: rgba(255,255,255,.85);
@@ -240,10 +240,10 @@ h1{
   max-width: 58ch;
   color: var(--muted);
   line-height: 1.65;
-  font-size: 13.5px;
+  font-size: 16px;
 }
 .body--small{
-  font-size: 13px;
+  font-size: 16px;
   color: rgba(255,255,255,.62);
 }
 
