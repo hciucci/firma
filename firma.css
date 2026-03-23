@@ -182,13 +182,23 @@ body.home .shell{
   align-items: center;
   height: 100vh;
 }
-.about-image img {
-  width: 100%;
+.about-image {
+  flex: 1;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.about-image img {
+  width: auto;
+  height: 80%;
+  max-width: 90%;
   object-fit: contain;
   border-radius: 0;
 }
 .about-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
