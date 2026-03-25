@@ -1,68 +1,91 @@
-<!-- Jaxon's Page -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="firma.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* Internal CSS for page-specific layout */
-        .account-page-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account | FIRMA</title>
+  <link rel="stylesheet" href="firma.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header class="topbar">
-  <div class="brand">
-    <a class="logoLink" href="index.html" aria-label="FIRMA home">
-      <img class="navLogo" src="images/firma-logo.png" alt="FIRMA logo" />
-    </a>
 
-    <nav class="nav">
-      <a href="about.html">About us</a>
-      <a href="locate-dealer.html">Locate Dealer</a>
-      <a href="vehicles.html">Vehicles</a>
-      <a class="active" href="account.html">Account</a>
-    </nav>
-  </div>
-</header>
+<body class="account">
+  <header class="topbar">
+    <div class="brand">
+      <a class="logoLink" href="index.html" aria-label="FIRMA home">
+        <img class="navLogo" src="images/firma-logo.png" alt="FIRMA logo" />
+      </a>
 
-    <div class="account-page-container">
-        <div class="account-box">
-    <h2 style="font-weight: 300; letter-spacing: 5px;">ACCOUNT PORTAL</h2>
-    <p>Hello, Edward</p>
-    <p style="color: #888; font-size: 12px; margin-bottom: 30px;">edward@email.firma.com</p>
+      <button
+        class="menu-toggle"
+        id="menuBtn"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
 
-            <form style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <input type="password" placeholder="Current password">
-                <input type="password" placeholder="New password">
-                <input type="password" placeholder="Confirm new password">
-                
-                <button type="button" style="width: 100%; padding: 15px; background-color: #24293e; color: white; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; margin-top: 10px;">
-                    DELETE ACCOUNT
-                </button>
-            </form>
-        </div>
+      <nav class="nav" id="mainNav">
+        <a href="about.html">About us</a>
+        <a href="locate-dealer.html">Locate Dealer</a>
+        <a href="vehicles.html">Vehicles</a>
+        <a class="active" href="account.html">Account</a>
+      </nav>
     </div>
-    <footer class="jaxonFooter">
-    <div class="footer-logo" style="margin-bottom: 40px; text-align: center;">
-    <img src="images/footer-logo.png" alt="Firma Wordmark" style="width: 200px; height: auto; opacity: 0.8;">
-</div>
+  </header>
+
+  <main class="account-page-container">
+    <section class="account-box" aria-label="Account portal">
+      <h2 style="font-weight: 300; letter-spacing: 0.22em;">ACCOUNT PORTAL</h2>
+      <p>Hello, Edward</p>
+      <p style="color: #888; font-size: 12px; margin-bottom: 30px;">edward@email.firma.com</p>
+
+      <form style="display: flex; flex-direction: column; gap: 10px;">
+        <input type="password" placeholder="Current password" aria-label="Current password">
+        <input type="password" placeholder="New password" aria-label="New password">
+        <input type="password" placeholder="Confirm new password" aria-label="Confirm new password">
+        <button type="button">DELETE ACCOUNT</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="jaxonFooter">
+    <div class="footer-logo">
+      <img src="images/footer-logo.png" alt="Firma Wordmark">
+    </div>
 
     <div class="footer-links">
-        <a href="index.html">About us</a>
-        <a href="vehicles.html">Vehicles</a>
-        <a href="account.html">Account</a>
-        <a href="#">Locate Dealer</a>
-        <a href="#">Contact Information</a>
+      <a href="index.html">About us</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="account.html">Account</a>
+      <a href="locate-dealer.html">Locate Dealer</a>
     </div>
-    
-    <p class="copyright" style="letter-spacing: 1px;">
-        2026 Firma all rights reserved
-    </p>
-</footer>
+
+    <p class="copyright">2026 Firma all rights reserved</p>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mainNav');
+
+    if (btn && nav) {
+      const closeNav = () => {
+        nav.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      };
+
+      btn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        btn.classList.toggle('active', isOpen);
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeNav);
+      });
+    }
+  </script>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<!-- Haden's Page -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -9,13 +8,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="locate-dealer">
   <header class="topbar">
     <div class="brand">
-      <a class="logoLink" href="about.html" aria-label="FIRMA home">
-  <img class="navLogo" src="images/firma-logo.png" alt="FIRMA logo" />
-</a>
-      <nav class="nav">
+      <a class="logoLink" href="index.html" aria-label="FIRMA home">
+        <img class="navLogo" src="images/firma-logo.png" alt="FIRMA logo" />
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuBtn"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
         <a href="about.html">About us</a>
         <a class="active" href="locate-dealer.html">Locate Dealer</a>
         <a href="vehicles.html">Vehicles</a>
@@ -31,8 +42,7 @@
       <div class="toolbar">
         <button class="chip" type="button">City/Zipcode/Country</button>
 
-        <!-- ✅ Replaced "Dropdown Menu" button with a real dropdown -->
-        <label class="srOnly" for="locationSelect">Choose a location</label>
+        <label class="sr-only" for="locationSelect">Choose a location</label>
         <select id="locationSelect" class="chipSelect">
           <option value="">Select a location…</option>
           <option value="Los Angeles, USA">Los Angeles, USA</option>
@@ -50,7 +60,6 @@
         <div class="mapWrap">
           <img class="mapImg" src="images/firma_world_map.png" alt="World map" />
 
-          <!-- Pins (percent-based so they scale with the image) -->
           <span class="pin" style="--x: 20.5%; --y: 44%;" data-label="Los Angeles, USA"></span>
           <span class="pin" style="--x: 20%; --y: 39%;" data-label="Vancouver, Canada"></span>
           <span class="pin" style="--x: 47%; --y: 36.5%;" data-label="London, UK"></span>
@@ -62,7 +71,6 @@
         </div>
       </div>
 
-      <!-- ✅ Added IDs so JS can update title/description -->
       <div class="infoCard" id="dealerInfo">
         <h2 id="dealerTitle">Moscow, Russia <span class="star">*</span></h2>
         <p id="dealerDesc">
@@ -79,12 +87,8 @@
   </main>
 
   <footer class="jaxonFooter">
-    <div class="footer-logo" style="margin-bottom: 40px; text-align: center;">
-      <img
-        src="images/footer-logo.png"
-        alt="Firma Wordmark"
-        style="width: 200px; height: auto; opacity: 0.8;"
-      >
+    <div class="footer-logo">
+      <img src="images/footer-logo.png" alt="Firma Wordmark">
     </div>
 
     <div class="footer-links">
@@ -95,12 +99,9 @@
       <a href="contact.html">Contact Information</a>
     </div>
 
-    <p class="copyright" style="letter-spacing: 1px;">
-      2026 Firma all rights reserved
-    </p>
+    <p class="copyright">2026 Firma all rights reserved</p>
   </footer>
 
-  <!-- ✅ Dropdown + pin syncing behavior -->
   <script>
     const data = {
       "Los Angeles, USA": {
@@ -142,30 +143,24 @@
     const descEl = document.getElementById("dealerDesc");
     const pins = Array.from(document.querySelectorAll(".pin"));
     const infoCard = document.getElementById("dealerInfo");
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mainNav');
 
     function setActiveLocation(label) {
       if (!label || !data[label]) return;
 
-      // Update info card
       titleEl.innerHTML = `${data[label].title} <span class="star">*</span>`;
       descEl.textContent = data[label].desc;
 
-      // Highlight correct pin
       pins.forEach(p => p.classList.toggle("active", p.dataset.label === label));
-
-      // Sync dropdown
       select.value = label;
-
-      // Optional: nudge attention to the info card
       infoCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
-    // Dropdown -> info + highlight
     select.addEventListener("change", (e) => {
       setActiveLocation(e.target.value);
     });
 
-    // Pins -> dropdown + info
     pins.forEach(pin => {
       pin.tabIndex = 0;
       pin.setAttribute("role", "button");
@@ -180,8 +175,25 @@
       });
     });
 
-    // Default active location
     setActiveLocation("Moscow, Russia");
+
+    if (btn && nav) {
+      const closeNav = () => {
+        nav.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      };
+
+      btn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        btn.classList.toggle('active', isOpen);
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeNav);
+      });
+    }
   </script>
 </body>
 </html>

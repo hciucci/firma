@@ -1,27 +1,32 @@
-<!-- Collaborative Page -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FIRMA — Home</title>
   <link rel="stylesheet" href="firma.css" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-  /* Internal CSS requirement */
-  .home .heroTitle { letter-spacing: .06em; }
-</style>
 </head>
 
 <body class="home">
-  <!-- Top nav -->
   <header class="topbar">
     <div class="brand">
       <a class="logoLink" href="index.html" aria-label="FIRMA home">
         <img class="navLogo" src="images/firma-logo.png" alt="FIRMA logo" />
       </a>
 
-      <nav class="nav">
+      <button
+        class="menu-toggle"
+        id="menuBtn"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="mainNav">
         <a href="about.html">About us</a>
         <a href="locate-dealer.html">Locate Dealer</a>
         <a href="vehicles.html">Vehicles</a>
@@ -30,10 +35,8 @@
     </div>
   </header>
 
-  <!-- Page content -->
   <main class="shell" aria-label="Homepage">
     <section class="heroCard" aria-label="Featured vehicle">
-      <!-- Hero image -->
       <div class="heroMedia">
         <img
           class="heroImg"
@@ -41,12 +44,11 @@
           alt="FIRMA sports car in front of mountains at sunset"
         />
 
-        <!-- Overlay headline -->
         <div class="heroOverlay" aria-hidden="true">
           <div class="heroHeadline">
             <div>Built With</div>
             <div>Purpose</div>
-        </div>
+          </div>
         </div>
       </div>
 
@@ -66,23 +68,43 @@
     </section>
   </main>
 
-  <!-- Bottom nav / footer -->
-<footer class="jaxonFooter">
-  <div class="footer-logo">
-    <img src="images/footer-logo.png" alt="Firma Wordmark">
-  </div>
+  <footer class="jaxonFooter">
+    <div class="footer-logo">
+      <img src="images/footer-logo.png" alt="Firma Wordmark">
+    </div>
 
-  <div class="footer-links">
-    <a href="about.html">About us</a>
-    <a href="vehicles.html">Vehicles</a>
-    <a href="account.html">Account</a>
-    <a href="locate-dealer.html">Locate Dealer</a>
-    <a href="contact.html">Contact Information</a>
-  </div>
+    <div class="footer-links">
+      <a href="about.html">About us</a>
+      <a href="vehicles.html">Vehicles</a>
+      <a href="account.html">Account</a>
+      <a href="locate-dealer.html">Locate Dealer</a>
+      <a href="contact.html">Contact Information</a>
+    </div>
 
-  <p class="copyright">
-    2026 Firma all rights reserved
-  </p>
-</footer>
+    <p class="copyright">2026 Firma all rights reserved</p>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mainNav');
+
+    if (btn && nav) {
+      const closeNav = () => {
+        nav.classList.remove('open');
+        btn.classList.remove('active');
+        btn.setAttribute('aria-expanded', 'false');
+      };
+
+      btn.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        btn.classList.toggle('active', isOpen);
+        btn.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeNav);
+      });
+    }
+  </script>
 </body>
 </html>
