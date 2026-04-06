@@ -27,28 +27,30 @@
       </button>
 
       <nav class="nav" id="mainNav">
-        <a href="about.html">About us</a>
-        <a href="locate-dealer.html">Locate Dealer</a>
-        <a href="vehicles.html">Vehicles</a>
-        <a class="active" href="account.html">Account</a>
-      </nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About us</a>
+  <a href="locate-dealer.html">Locate Dealer</a>
+  <a href="vehicles.html">Vehicles</a>
+  <a href="account.html">Account</a>
+</nav>
     </div>
   </header>
 
   <main class="account-page-container">
-    <section class="account-box" aria-label="Account portal">
-      <h2 style="font-weight: 300; letter-spacing: 0.22em;">ACCOUNT PORTAL</h2>
-      <p>Hello, Edward</p>
-      <p style="color: #888; font-size: 12px; margin-bottom: 30px;">edward@email.firma.com</p>
+  <section class="account-box" aria-label="Account portal">
+    <h2 style="font-weight: 300; letter-spacing: 0.22em;">ACCOUNT PORTAL</h2>
+    <p>Hello, Edward</p>
+    <p style="color: #888; font-size: 12px; margin-bottom: 30px;">edward@email.firma.com</p>
 
-      <form style="display: flex; flex-direction: column; gap: 10px;">
-        <input type="password" placeholder="Current password" aria-label="Current password">
-        <input type="password" placeholder="New password" aria-label="New password">
-        <input type="password" placeholder="Confirm new password" aria-label="Confirm new password">
-        <button type="button">DELETE ACCOUNT</button>
-      </form>
-    </section>
-  </main>
+    <form id="passwordForm" novalidate style="display: flex; flex-direction: column; gap: 10px;">
+      <input type="password" id="currentPassword" placeholder="Current password" aria-label="Current password">
+      <input type="password" id="newPassword" placeholder="New password" aria-label="New password">
+      <input type="password" id="confirmPassword" placeholder="Confirm new password" aria-label="Confirm new password">
+      <button type="submit">UPDATE PASSWORD</button>
+      <p id="accountMessage" class="form-message" aria-live="polite"></p>
+    </form>
+  </section>
+</main>
 
   <footer class="jaxonFooter">
     <div class="footer-logo">
@@ -65,27 +67,6 @@
     <p class="copyright">2026 Firma all rights reserved</p>
   </footer>
 
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const nav = document.getElementById('mainNav');
-
-    if (btn && nav) {
-      const closeNav = () => {
-        nav.classList.remove('open');
-        btn.classList.remove('active');
-        btn.setAttribute('aria-expanded', 'false');
-      };
-
-      btn.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('open');
-        btn.classList.toggle('active', isOpen);
-        btn.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeNav);
-      });
-    }
-  </script>
+  <script src="firma.js" defer></script>
 </body>
 </html>

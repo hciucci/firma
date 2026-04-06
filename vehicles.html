@@ -27,46 +27,47 @@
       </button>
 
       <nav class="nav" id="mainNav">
-        <a href="about.html">About us</a>
-        <a href="locate-dealer.html">Locate Dealer</a>
-        <a class="active" href="vehicles.html">Vehicles</a>
-        <a href="account.html">Account</a>
-      </nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About us</a>
+  <a href="locate-dealer.html">Locate Dealer</a>
+  <a href="vehicles.html">Vehicles</a>
+  <a href="account.html">Account</a>
+</nav>
     </div>
   </header>
 
   <main class="shell">
-    <h2 class="section-title">SPORT PERFORMANCE</h2>
-    <div class="vehicle-grid">
-      <div class="card">
-        <img src="images/vortice.png" alt="FIRMA Vortice R">
-        <h3>FIRMA VORTICE R</h3>
-      </div>
+  <h2 class="section-title">SPORT PERFORMANCE</h2>
+  <div class="vehicle-grid">
+    <div class="card" data-title="FIRMA VORTICE R" data-info="A rear-engine sports car engineered for balance, precision, and everyday usability. Powered by a twin-turbo flat-6 producing 540 horsepower.">
+  <img src="images/vortice.png" alt="FIRMA Vortice R">
+</div>
 
-      <div class="card">
-        <img src="images/f22.png" alt="FIRMA F22">
-        <h3>FIRMA F22</h3>
-      </div>
+    <div class="card" data-title="FIRMA F22" data-info="A track-focused performance coupe built for sharp handling, aggressive response, and lightweight agility.">
+      <img src="images/f22.png" alt="FIRMA F22">
+    </div>
+  </div>
+
+  <h2 class="section-title">SPORT UTILITY</h2>
+  <div class="vehicle-grid">
+    <div class="card" data-title="FIRMA X8" data-info="A full-size performance SUV combining power, comfort, and advanced technology for daily driving.">
+      <img src="images/x8.png" alt="FIRMA X8">
     </div>
 
-    <h2 class="section-title">SPORT UTILITY</h2>
-    <div class="vehicle-grid">
-      <div class="card">
-        <img src="images/x8.png" alt="FIRMA X8">
-        <h3>FIRMA X8</h3>
-      </div>
-
-      <div class="card">
-        <img src="images/x6.png" alt="FIRMA X6">
-        <h3>FIRMA X6</h3>
-      </div>
-
-      <div class="card">
-        <img src="images/x4.png" alt="FIRMA X4">
-        <h3>FIRMA X4</h3>
-      </div>
+    <div class="card" data-title="FIRMA X6" data-info="A midsize sport utility model with balanced handling, premium features, and versatile cargo space.">
+      <img src="images/x6.png" alt="FIRMA X6">
     </div>
-  </main>
+
+    <div class="card" data-title="FIRMA X4" data-info="A compact performance SUV designed for agility, style, and efficient urban driving.">
+      <img src="images/x4.png" alt="FIRMA X4">
+    </div>
+  </div>
+
+  <div class="infoCard" id="vehicleInfo">
+    <h3 id="vehicleTitle">Select a vehicle</h3>
+    <p id="vehicleText">Click a vehicle card to view a quick description.</p>
+  </div>
+</main>
 
   <footer class="jaxonFooter">
     <div class="footer-logo">
@@ -83,27 +84,6 @@
     <p class="copyright">2026 Firma all rights reserved</p>
   </footer>
 
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const nav = document.getElementById('mainNav');
-
-    if (btn && nav) {
-      const closeNav = () => {
-        nav.classList.remove('open');
-        btn.classList.remove('active');
-        btn.setAttribute('aria-expanded', 'false');
-      };
-
-      btn.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('open');
-        btn.classList.toggle('active', isOpen);
-        btn.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeNav);
-      });
-    }
-  </script>
+  <script src="firma.js" defer></script>
 </body>
 </html>
