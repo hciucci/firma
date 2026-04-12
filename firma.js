@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Mobile menu
   const btn = document.getElementById("menuBtn");
   const nav = document.getElementById("mainNav");
 
@@ -20,7 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Account page validation
   const accountForm = document.getElementById("passwordForm");
+
   if (accountForm) {
     const currentPassword = document.getElementById("currentPassword");
     const newPassword = document.getElementById("newPassword");
@@ -60,32 +63,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Vehicles hover info
   const vehicleCards = document.querySelectorAll(".card[data-title][data-info]");
-const vehicleTitle = document.getElementById("vehicleTitle");
-const vehicleText = document.getElementById("vehicleText");
+  const vehicleTitle = document.getElementById("vehicleTitle");
+  const vehicleText = document.getElementById("vehicleText");
 
-if (vehicleCards.length && vehicleTitle && vehicleText) {
-  const defaultTitle = vehicleTitle.textContent;
-  const defaultText = vehicleText.textContent;
+  if (vehicleCards.length && vehicleTitle && vehicleText) {
+    const defaultTitle = vehicleTitle.textContent;
+    const defaultText = vehicleText.textContent;
 
-  const showDetails = (card) => {
-    vehicleTitle.textContent = card.dataset.title;
-    vehicleText.textContent = card.dataset.info;
-  };
+    const showDetails = (card) => {
+      vehicleTitle.textContent = card.dataset.title;
+      vehicleText.textContent = card.dataset.info;
+    };
 
-  const resetDetails = () => {
-    vehicleTitle.textContent = defaultTitle;
-    vehicleText.textContent = defaultText;
-  };
+    const resetDetails = () => {
+      vehicleTitle.textContent = defaultTitle;
+      vehicleText.textContent = defaultText;
+    };
 
-  vehicleCards.forEach((card) => {
-    card.tabIndex = 0;
-    card.setAttribute("role", "button");
+    vehicleCards.forEach((card) => {
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
 
-    card.addEventListener("mouseenter", () => showDetails(card));
-    card.addEventListener("focus", () => showDetails(card));
-
-    card.addEventListener("mouseleave", resetDetails);
-    card.addEventListener("blur", resetDetails);
-  });
-}
+      card.addEventListener("mouseenter", () => showDetails(card));
+      card.addEventListener("focus", () => showDetails(card));
+      card.addEventListener("mouseleave", resetDetails);
+      card.addEventListener("blur", resetDetails);
+    });
+  }
+});
