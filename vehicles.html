@@ -39,34 +39,60 @@
   <main class="shell">
   <h2 class="section-title">SPORT PERFORMANCE</h2>
   <div class="vehicle-grid">
-    <div class="card" data-title="FIRMA VORTICE R" data-info="A rear-engine sports car engineered for balance, precision, and everyday usability. Powered by a twin-turbo flat-6 producing 540 horsepower.">
+    <div class="card"
+     data-title="FIRMA VORTICE R"
+     data-info="A rear-engine sports car engineered for balance, precision, and everyday usability. Powered by a twin-turbo flat-6 producing 540 horsepower."
+     data-image="images/vortice.png">
   <img src="images/vortice.png" alt="FIRMA Vortice R">
 </div>
 
-    <div class="card" data-title="FIRMA F22" data-info="A track-focused performance coupe built for sharp handling, aggressive response, and lightweight agility.">
-      <img src="images/f22.png" alt="FIRMA F22">
-    </div>
+    <div class="card"
+     data-title="FIRMA F22"
+     data-info="A track-focused performance coupe built for sharp handling, aggressive response, and lightweight agility."
+     data-image="images/f22.png">
+  <img src="images/f22.png" alt="FIRMA F22">
+</div>
   </div>
 
   <h2 class="section-title">SPORT UTILITY</h2>
   <div class="vehicle-grid">
-    <div class="card" data-title="FIRMA X8" data-info="A full-size performance SUV combining power, comfort, and advanced technology for daily driving.">
-      <img src="images/x8.png" alt="FIRMA X8">
-    </div>
+    <div class="card"
+     data-title="FIRMA X8"
+     data-info="A full-size performance SUV combining power, comfort, and advanced technology for daily driving."
+     data-image="images/x8.png">
+  <img src="images/x8.png" alt="FIRMA X8">
+</div>
 
-    <div class="card" data-title="FIRMA X6" data-info="A midsize sport utility model with balanced handling, premium features, and versatile cargo space.">
-      <img src="images/x6.png" alt="FIRMA X6">
-    </div>
+    <div class="card"
+     data-title="FIRMA X6"
+     data-info="A midsize sport utility model with balanced handling, premium features, and versatile cargo space."
+     data-image="images/x6.png">
+  <img src="images/x6.png" alt="FIRMA X6">
+</div>
 
-    <div class="card" data-title="FIRMA X4" data-info="A compact performance SUV designed for agility, style, and efficient urban driving.">
-      <img src="images/x4.png" alt="FIRMA X4">
-    </div>
+    <div class="card featured"
+     data-title="FIRMA X4"
+     data-info="A compact performance SUV designed for agility, style, and efficient urban driving."
+     data-image="images/x4.png">
+  <img src="images/x4.png" alt="FIRMA X4">
+</div>
   </div>
 
-  <div class="infoCard" id="vehicleInfo">
-    <h3 id="vehicleTitle">Select a vehicle</h3>
-    <p id="vehicleText">Click a vehicle card to view a quick description.</p>
+ <div class="modal" id="vehicleModal" aria-hidden="true">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close vehicle details">
+      &times;
+    </button>
+
+    <img id="modalImage" class="modal-image" src="" alt="" />
+
+    <h3 id="modalTitle"></h3>
+    <p id="modalText"></p>
+    <ul id="modalSpecs" class="modal-specs"></ul>
   </div>
+</div>
 </main>
 
   <footer class="jaxonFooter">
@@ -75,11 +101,18 @@
     </div>
 
     <div class="footer-links">
-      <a href="index.html">About us</a>
-      <a href="vehicles.html">Vehicles</a>
-      <a href="account.html">Account</a>
-      <a href="locate-dealer.html">Locate Dealer</a>
-    </div>
+  <a href="about.html">About us</a>
+  <a href="vehicles.html">Vehicles</a>
+  <a href="account.html">Account</a>
+  <a href="locate-dealer.html">Locate Dealer</a>
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLScvvNPuNFvGHY0CEtNpbougkRGo4u3VaWttdpTRRbjysm6nHg/viewform?usp=publish-editor"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Contact Us
+  </a>
+</div>
 
     <p class="copyright">2026 Firma all rights reserved</p>
   </footer>

@@ -36,19 +36,96 @@
     </div>
   </header>
 
-  <main class="account-page-container">
-  <section class="account-box" aria-label="Account portal">
-    <h2 style="font-weight: 300; letter-spacing: 0.22em;">ACCOUNT PORTAL</h2>
-    <p>Hello, Edward</p>
-    <p style="color: #888; font-size: 12px; margin-bottom: 30px;">edward@email.firma.com</p>
+ <main class="account-page-container">
+  <section class="account-shell">
 
-    <form id="passwordForm" novalidate style="display: flex; flex-direction: column; gap: 10px;">
-      <input type="password" id="currentPassword" placeholder="Current password" aria-label="Current password">
-      <input type="password" id="newPassword" placeholder="New password" aria-label="New password">
-      <input type="password" id="confirmPassword" placeholder="Confirm new password" aria-label="Confirm new password">
-      <button type="submit">UPDATE PASSWORD</button>
-      <p id="accountMessage" class="form-message" aria-live="polite"></p>
-    </form>
+    <div id="entryScreen" class="account-card account-entry">
+      <div class="account-hero">
+        <div class="account-eyebrow">FIRMA OWNER PORTAL</div>
+        <h1 class="account-title">Access your dashboard</h1>
+        <p class="account-subtitle">
+          Enter your details to personalize your temporary FIRMA experience.
+        </p>
+      </div>
+
+      <form id="entryForm" class="account-form" novalidate>
+        <input type="text" id="userName" placeholder="Your name" aria-label="Your name" required>
+        <input type="password" id="portalPassword" placeholder="Generic password" aria-label="Generic password" required>
+
+        <label class="sr-only" for="preferredDealer">Preferred dealer</label>
+        <select id="preferredDealer" class="account-select" aria-label="Preferred dealer" required>
+          <option value="">Preferred dealer</option>
+          <option value="Los Angeles">Los Angeles</option>
+          <option value="Vancouver">Vancouver</option>
+          <option value="London">London</option>
+          <option value="Moscow">Moscow</option>
+          <option value="Tokyo">Tokyo</option>
+          <option value="Sydney">Sydney</option>
+          <option value="Cape Town">Cape Town</option>
+          <option value="São Paulo">São Paulo</option>
+        </select>
+
+        <button type="submit">Enter Portal</button>
+        <p id="entryMessage" class="form-message" aria-live="polite"></p>
+      </form>
+    </div>
+
+  <div id="dashboardScreen" class="account-dashboard" hidden>
+  <div class="account-hero">
+    <div class="account-eyebrow">FIRMA OWNER PORTAL</div>
+    <h1 class="account-title" id="accountGreeting">Welcome back</h1>
+    <p class="account-subtitle" id="accountSubtext">
+      Your temporary FIRMA dashboard is personalized for your selected dealer.
+    </p>
+  </div>
+
+  <div class="account-grid">
+    <section class="account-card account-profile">
+      <div class="profile-top">
+        <div class="profile-avatar" id="profileAvatar">F</div>
+        <div>
+          <h2 class="account-card-title">Profile</h2>
+          <p class="account-card-text" id="profileEmail">user@firma.com</p>
+        </div>
+      </div>
+
+      <div class="account-stats">
+        <div class="stat">
+          <span class="stat-label">Saved Vehicles</span>
+          <strong>03</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Preferred Dealer</span>
+          <strong id="dealerValue">—</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Member Status</span>
+          <strong>Active</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="account-card account-security">
+      <h2 class="account-card-title">Security</h2>
+      <p class="account-card-text">
+        Update your password to keep your FIRMA account secure.
+      </p>
+
+      <form id="passwordForm" class="account-form" novalidate>
+        <input type="password" id="currentPassword" placeholder="Current password" aria-label="Current password">
+        <input type="password" id="newPassword" placeholder="New password" aria-label="New password">
+        <input type="password" id="confirmPassword" placeholder="Confirm new password" aria-label="Confirm new password">
+        <button type="submit">Update Password</button>
+        <p id="accountMessage" class="form-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </div>
+
+  <div class="account-signout">
+    <button id="signOutBtn" class="signout-btn" type="button">Sign Out of FIRMA</button>
+  </div>
+</div>
+
   </section>
 </main>
 
@@ -58,11 +135,18 @@
     </div>
 
     <div class="footer-links">
-      <a href="index.html">About us</a>
-      <a href="vehicles.html">Vehicles</a>
-      <a href="account.html">Account</a>
-      <a href="locate-dealer.html">Locate Dealer</a>
-    </div>
+  <a href="about.html">About us</a>
+  <a href="vehicles.html">Vehicles</a>
+  <a href="account.html">Account</a>
+  <a href="locate-dealer.html">Locate Dealer</a>
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLScvvNPuNFvGHY0CEtNpbougkRGo4u3VaWttdpTRRbjysm6nHg/viewform?usp=publish-editor"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Contact Us
+  </a>
+</div>
 
     <p class="copyright">2026 Firma all rights reserved</p>
   </footer>

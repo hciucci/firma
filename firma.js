@@ -30,66 +30,231 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmPassword = document.getElementById("confirmPassword");
     const message = document.getElementById("accountMessage");
 
-    accountForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+    if (currentPassword && newPassword && confirmPassword && message) {
+      accountForm.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-      const current = currentPassword.value.trim();
-      const next = newPassword.value.trim();
-      const confirm = confirmPassword.value.trim();
+        const current = currentPassword.value.trim();
+        const next = newPassword.value.trim();
+        const confirm = confirmPassword.value.trim();
 
-      message.className = "form-message";
+        message.className = "form-message";
 
-      if (!current || !next || !confirm) {
-        message.textContent = "Please fill out all password fields.";
-        message.classList.add("error");
-        return;
-      }
+        if (!current || !next || !confirm) {
+          message.textContent = "Please fill out all password fields.";
+          message.classList.add("error");
+          return;
+        }
 
-      if (next.length < 8) {
-        message.textContent = "New password must be at least 8 characters long.";
-        message.classList.add("error");
-        return;
-      }
+        if (next.length < 8) {
+          message.textContent = "New password must be at least 8 characters long.";
+          message.classList.add("error");
+          return;
+        }
 
-      if (next !== confirm) {
-        message.textContent = "New password and confirmation do not match.";
-        message.classList.add("error");
-        return;
-      }
+        if (next !== confirm) {
+          message.textContent = "New password and confirmation do not match.";
+          message.classList.add("error");
+          return;
+        }
 
-      message.textContent = "Password updated successfully.";
-      message.classList.add("success");
-      accountForm.reset();
-    });
+        message.textContent = "Password updated successfully.";
+        message.classList.add("success");
+        accountForm.reset();
+      });
+    }
   }
 
-  // Vehicles hover info
-  const vehicleCards = document.querySelectorAll(".card[data-title][data-info]");
-  const vehicleTitle = document.getElementById("vehicleTitle");
-  const vehicleText = document.getElementById("vehicleText");
+  // Vehicles modal
+  const vehicleCards = document.querySelectorAll(".card[data-title][data-info][data-image]");
+  const vehicleModal = document.getElementById("vehicleModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalText = document.getElementById("modalText");
+  const modalSpecs = document.getElementById("modalSpecs");
+  const modalClose = document.getElementById("modalClose");
+  const modalBackdrop = document.getElementById("modalBackdrop");
 
-  if (vehicleCards.length && vehicleTitle && vehicleText) {
-    const defaultTitle = vehicleTitle.textContent;
-    const defaultText = vehicleText.textContent;
-
-    const showDetails = (card) => {
-      vehicleTitle.textContent = card.dataset.title;
-      vehicleText.textContent = card.dataset.info;
+  if (
+    vehicleCards.length &&
+    vehicleModal &&
+    modalImage &&
+    modalTitle &&
+    modalText &&
+    modalSpecs &&
+    modalClose &&
+    modalBackdrop
+  ) {
+    const vehicleDetails = {
+      "FIRMA VORTICE R": [
+        "540 HP",
+        "Twin-Turbo Flat-6",
+        "0-60 in 3.2s",
+        "Rear-engine layout"
+      ],
+      "FIRMA F22": [
+        "Lightweight chassis",
+        "Track-tuned suspension",
+        "High downforce aero"
+      ],
+      "FIRMA X8": [
+        "Full-size SUV",
+        "Performance powertrain",
+        "Luxury interior"
+      ],
+      "FIRMA X6": [
+        "Midsize SUV",
+        "Balanced handling",
+        "Premium features"
+      ],
+      "FIRMA X4": [
+        "Compact SUV",
+        "Urban-focused design",
+        "Efficient performance"
+      ]
     };
 
-    const resetDetails = () => {
-      vehicleTitle.textContent = defaultTitle;
-      vehicleText.textContent = defaultText;
+    const openModal = (card) => {
+      const title = card.dataset.title;
+      const image = card.dataset.image;
+
+      modalTitle.textContent = title;
+      modalText.textContent = card.dataset.info;
+      modalImage.src = image;
+      modalImage.alt = title;
+
+      modalSpecs.innerHTML = "";
+      (vehicleDetails[title] || []).forEach((spec) => {
+        const li = document.createElement("li");
+        li.textContent = spec;
+        modalSpecs.appendChild(li);
+      });
+
+      vehicleModal.classList.add("open");
+      vehicleModal.setAttribute("aria-hidden", "false");
+      modalClose.focus();
+    };
+
+    const closeModal = () => {
+      vehicleModal.classList.remove("open");
+      vehicleModal.setAttribute("aria-hidden", "true");
     };
 
     vehicleCards.forEach((card) => {
       card.tabIndex = 0;
       card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `View details for ${card.dataset.title}`);
 
-      card.addEventListener("mouseenter", () => showDetails(card));
-      card.addEventListener("focus", () => showDetails(card));
-      card.addEventListener("mouseleave", resetDetails);
-      card.addEventListener("blur", resetDetails);
+      card.addEventListener("click", () => openModal(card));
+      card.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter" || ev.key === " ") {
+          ev.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+
+    modalClose.addEventListener("click", closeModal);
+    modalBackdrop.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (ev) => {
+      if (ev.key === "Escape" && vehicleModal.classList.contains("open")) {
+        closeModal();
+      }
     });
   }
 });
+// Fake personalization for demo
+const greeting = document.getElementById("accountGreeting");
+
+if (greeting) {
+  const names = ["Driver", "Member", "Owner", "Client"];
+  const random = names[Math.floor(Math.random() * names.length)];
+
+  greeting.textContent = "Your FIRMA Dashboard";
+}
+// Temporary account portal personalization
+const entryScreen = document.getElementById("entryScreen");
+const dashboardScreen = document.getElementById("dashboardScreen");
+const entryForm = document.getElementById("entryForm");
+const entryMessage = document.getElementById("entryMessage");
+
+const accountGreeting = document.getElementById("accountGreeting");
+const accountSubtext = document.getElementById("accountSubtext");
+const profileAvatar = document.getElementById("profileAvatar");
+const profileEmail = document.getElementById("profileEmail");
+const dealerValue = document.getElementById("dealerValue");
+
+const savedName = sessionStorage.getItem("firmaName");
+const savedDealer = sessionStorage.getItem("firmaDealer");
+
+if (savedName && savedDealer && entryScreen && dashboardScreen) {
+  entryScreen.hidden = true;
+  dashboardScreen.hidden = false;
+
+  accountGreeting.textContent = `Welcome, ${savedName}`;
+  accountSubtext.textContent = `Your temporary FIRMA dashboard is personalized for ${savedDealer}.`;
+  profileAvatar.textContent = savedName.charAt(0).toUpperCase();
+  profileEmail.textContent = `${savedName.toLowerCase().replace(/\s+/g, ".")}@firma.com`;
+  dealerValue.textContent = savedDealer;
+}
+
+if (entryForm && entryScreen && dashboardScreen) {
+  entryForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById("userName");
+    const passwordInput = document.getElementById("portalPassword");
+    const dealerInput = document.getElementById("preferredDealer");
+
+    const name = nameInput.value.trim();
+    const password = passwordInput.value.trim();
+    const dealer = dealerInput.value.trim();
+
+    entryMessage.className = "form-message";
+
+    if (!name || !password || !dealer) {
+      entryMessage.textContent = "Please complete all fields.";
+      entryMessage.classList.add("error");
+      return;
+    }
+
+    if (password.length < 4) {
+      entryMessage.textContent = "Use any simple demo password with at least 4 characters.";
+      entryMessage.classList.add("error");
+      return;
+    }
+
+    sessionStorage.setItem("firmaName", name);
+    sessionStorage.setItem("firmaDealer", dealer);
+
+    entryScreen.hidden = true;
+    dashboardScreen.hidden = false;
+
+    if (accountGreeting && accountSubtext && profileAvatar && profileEmail && dealerValue) {
+      accountGreeting.textContent = `Welcome, ${name}`;
+      accountSubtext.textContent = `Your temporary FIRMA dashboard is personalized for ${dealer}.`;
+      profileAvatar.textContent = name.charAt(0).toUpperCase();
+      profileEmail.textContent = `${name.toLowerCase().replace(/\s+/g, ".")}@firma.com`;
+      dealerValue.textContent = dealer;
+    }
+  });
+}
+// Sign out functionality
+const signOutBtn = document.getElementById("signOutBtn");
+
+if (signOutBtn && entryScreen && dashboardScreen) {
+  signOutBtn.addEventListener("click", () => {
+    // Clear stored data
+    sessionStorage.removeItem("firmaName");
+    sessionStorage.removeItem("firmaDealer");
+
+    // Reset UI
+    dashboardScreen.hidden = true;
+    entryScreen.hidden = false;
+
+    // Optional: reset form fields
+    const entryForm = document.getElementById("entryForm");
+    if (entryForm) entryForm.reset();
+  });
+}
