@@ -98,27 +98,6 @@
     <p class="copyright">2026 Firma all rights reserved</p>
   </footer>
 
-  <script>
-    const btn = document.getElementById('menuBtn');
-    const nav = document.getElementById('mainNav');
-
-    if (btn && nav) {
-      const closeNav = () => {
-        nav.classList.remove('open');
-        btn.classList.remove('active');
-        btn.setAttribute('aria-expanded', 'false');
-      };
-
-      btn.addEventListener('click', () => {
-        const isOpen = nav.classList.toggle('open');
-        btn.classList.toggle('active', isOpen);
-        btn.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      nav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', closeNav);
-      });
-    }
-  </script>
+  <script src="firma.js"></script>
 </body>
 </html>
