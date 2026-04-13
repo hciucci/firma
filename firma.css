@@ -337,6 +337,21 @@ h1 {
     border-radius: 10px;
 }
 
+.pin.active {
+  background: rgba(120, 140, 255, 0.95);
+  box-shadow: 0 0 0 6px rgba(120, 140, 255, 0.2);
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+.infoCard {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.infoCard.updating {
+  opacity: 0.85;
+  transform: translateY(4px);
+}
+
 /* =====================================
    HOME HERO
    ===================================== */

@@ -143,6 +143,127 @@ document.addEventListener("DOMContentLoaded", () => {
     setActiveLocation("Moscow, Russia");
   }
 
+  document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.getElementById("menuBtn");
+  const mainNav = document.getElementById("mainNav");
+
+  if (menuBtn && mainNav) {
+    menuBtn.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuBtn.classList.toggle("active", isOpen);
+      menuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+  }
+
+  const locationSelect = document.getElementById("locationSelect");
+  const dealerTitle = document.getElementById("dealerTitle");
+  const dealerDesc = document.getElementById("dealerDesc");
+  const dealerInfo = document.getElementById("dealerInfo");
+  const pins = document.querySelectorAll(".pin");
+
+  if (!locationSelect || !dealerTitle || !dealerDesc || !dealerInfo || !pins.length) {
+    return;
+  }
+
+  const dealerData = {
+    "Los Angeles, USA": {
+      title: "Los Angeles, USA",
+      description: "Our Los Angeles dealership serves as one of our premier West Coast locations, connecting drivers to FIRMA performance and design."
+    },
+    "Vancouver, Canada": {
+      title: "Vancouver, Canada",
+      description: "Our Vancouver dealership expands FIRMA’s reach into Canada and offers drivers a refined and modern dealership experience."
+    },
+    "London, UK": {
+      title: "London, UK",
+      description: "Our London dealership reflects FIRMA’s luxury identity and brings our vehicles to one of the world’s most recognized cities."
+    },
+    "Moscow, Russia": {
+      title: "Moscow, Russia",
+      description: "Our Moscow dealership was the first created out of our dealerships that span nationally."
+    },
+    "Tokyo, Japan": {
+      title: "Tokyo, Japan",
+      description: "Our Tokyo dealership represents FIRMA in a major innovation hub, blending advanced performance with global style."
+    },
+    "Sydney, Australia": {
+      title: "Sydney, Australia",
+      description: "Our Sydney dealership supports FIRMA’s presence in Australia and gives drivers access to our vehicles across the region."
+    },
+    "Cape Town, South Africa": {
+      title: "Cape Town, South Africa",
+      description: "Our Cape Town dealership extends FIRMA’s network into South Africa with a focus on premium customer experience."
+    },
+    "São Paulo, Brazil": {
+      title: "São Paulo, Brazil",
+      description: "Our São Paulo dealership strengthens FIRMA’s presence in South America and delivers our vehicles to a growing market."
+    }
+  };
+
+  function clearActivePins() {
+    pins.forEach((pin) => pin.classList.remove("active"));
+  }
+
+  function setActivePin(location) {
+    const activePin = document.querySelector(`.pin[data-label="${location}"]`);
+    if (activePin) {
+      activePin.classList.add("active");
+    }
+  }
+
+  function updateDealerInfo(location) {
+    const dealer = dealerData[location];
+    if (!dealer) return;
+
+    dealerInfo.classList.add("updating");
+
+    setTimeout(() => {
+      dealerTitle.innerHTML = `${dealer.title} <span class="star">*</span>`;
+      dealerDesc.textContent = dealer.description;
+      dealerInfo.classList.remove("updating");
+    }, 120);
+  }
+
+  function handleLocationChange(location) {
+    clearActivePins();
+    setActivePin(location);
+    updateDealerInfo(location);
+  }
+
+  locationSelect.addEventListener("change", (event) => {
+    const selectedLocation = event.target.value;
+    if (!selectedLocation) return;
+    handleLocationChange(selectedLocation);
+  });
+
+  pins.forEach((pin) => {
+    pin.addEventListener("click", () => {
+      const location = pin.dataset.label;
+      locationSelect.value = location;
+      handleLocationChange(location);
+    });
+
+    pin.setAttribute("tabindex", "0");
+    pin.setAttribute("role", "button");
+    pin.setAttribute("aria-label", pin.dataset.label);
+
+    pin.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        const location = pin.dataset.label;
+        locationSelect.value = location;
+        handleLocationChange(location);
+      }
+    });
+  });
+
+  if (locationSelect.value) {
+    handleLocationChange(locationSelect.value);
+  } else {
+    handleLocationChange("Moscow, Russia");
+  }
+});
+
   // Vehicles modal
   const vehicleCards = document.querySelectorAll(".card[data-title][data-info][data-image]");
   const vehicleModal = document.getElementById("vehicleModal");
