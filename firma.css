@@ -185,7 +185,7 @@ button {
 
 .panel {
     width: 100%;
-    max-width: 900px;
+    max-width: 1400px;
     padding: 40px 20px;
 }
 
@@ -203,26 +203,17 @@ button {
 
 .about-image {
     flex: 1;
-    padding: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .about-image img {
     width: 100%;
-    max-width: 100%;
-    height: auto;
-    max-height: 80vh;
-    object-fit: contain;
+    height: 80vh;
+    object-fit: cover; /* key change */
+    border-radius: 12px;
 }
 
 .about-content {
     flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 /* =====================================
