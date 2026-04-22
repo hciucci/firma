@@ -108,19 +108,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
 
-    const setActiveLocation = (label) => {
-      if (!label || !dealerData[label]) return;
+    const setActiveLocation = (label, shouldScroll = false) => {
+  if (!label || !dealerData[label]) return;
 
-      titleEl.innerHTML = `${dealerData[label].title} <span class="star">*</span>`;
-      descEl.textContent = dealerData[label].desc;
+  titleEl.innerHTML = `${dealerData[label].title} <span class="star">*</span>`;
+  descEl.textContent = dealerData[label].desc;
 
-      pins.forEach((pin) => {
-        pin.classList.toggle("active", pin.dataset.label === label);
-      });
+  pins.forEach((pin) => {
+    pin.classList.toggle("active", pin.dataset.label === label);
+  });
 
-      locationSelect.value = label;
-      infoCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    };
+  locationSelect.value = label;
+
+  if (shouldScroll) {
+    infoCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+};
 
     locationSelect.addEventListener("change", (e) => {
       setActiveLocation(e.target.value);
